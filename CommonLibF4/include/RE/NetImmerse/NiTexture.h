@@ -34,21 +34,21 @@ namespace RE
 		static NiTexture* Create(RE::BSFixedString& texturePath, bool isSRGB, bool allowDegrade)
 		{
 			using func_t = NiTexture* (*)(RE::BSFixedString& texturePath, bool isSRGB, bool allowDegrade);
-			REL::Relocation<func_t>   func{ REL::ID(1071950) };
+			REL::Relocation<func_t> func{ REL::ID(1071950) };
 			return func(texturePath, isSRGB, allowDegrade);
 		}
 
 		static NiTexture* Create(RE::BSResourceNiBinaryStream* stream, const char* texturePath, bool isDDX, bool isSRGB, bool allowDegrade)
 		{
 			using func_t = NiTexture* (*)(RE::BSResourceNiBinaryStream* stream, const char* texturePath, bool isDDX, bool isSRGB, bool allowDegrade);
-			REL::Relocation<func_t>   func{ REL::ID(964969) };
+			REL::Relocation<func_t> func{ REL::ID(964969) };
 			return func(stream, texturePath, isDDX, isSRGB, allowDegrade);
 		}
 
 		static NiTexture* Create(BSTSmartPointer<RE::BSResource::Stream>& stream, const char* texturePath, bool isDDX, bool isSRGB, bool allowDegrade)
 		{
 			using func_t = NiTexture* (*)(BSTSmartPointer<RE::BSResource::Stream>& stream, const char* texturePath, bool isDDX, bool isSRGB, bool allowDegrade);
-			REL::Relocation<func_t>   func{ REL::ID(685580) };
+			REL::Relocation<func_t> func{ REL::ID(685580) };
 			return func(stream, texturePath, isDDX, isSRGB, allowDegrade);
 		}
 

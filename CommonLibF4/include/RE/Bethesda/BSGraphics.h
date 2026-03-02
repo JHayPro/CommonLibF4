@@ -59,17 +59,17 @@ namespace RE
 		public:
 			REX::W32::ID3D11ShaderResourceView* srv;              // 00
 			REX::W32::ID3D11Texture2D*          texture;          // 08
-			void*								unk10;            // 10
-			void*								unk18;            // 18
-			void*								unk20;            // 20
-			TextureHeader						header;           // 28
-			std::uint32_t						unk30;            // 30
-			std::uint32_t						refCount;         // 34
-			std::uint8_t						unk38[4];         // 38
-			std::uint8_t						currentMipLevel;  // 3C
-			std::uint8_t						targetMipLevel;   // 3D
-			std::uint8_t						flags2;           // 3E
-			std::uint8_t						flags3;           // 3F
+			void*                               unk10;            // 10
+			void*                               unk18;            // 18
+			void*                               unk20;            // 20
+			TextureHeader                       header;           // 28
+			std::uint32_t                       unk30;            // 30
+			std::uint32_t                       refCount;         // 34
+			std::uint8_t                        unk38[4];         // 38
+			std::uint8_t                        currentMipLevel;  // 3C
+			std::uint8_t                        targetMipLevel;   // 3D
+			std::uint8_t                        flags2;           // 3E
+			std::uint8_t                        flags3;           // 3F
 		};
 		static_assert(sizeof(Texture) == 0x40);
 
