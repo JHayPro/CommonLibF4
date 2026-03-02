@@ -76,14 +76,14 @@ namespace RE
 		inline Texture* CreateTexture(TextureHeader& header, bool sRGB)
 		{
 			using func_t = Texture* (*)(TextureHeader& header, bool sRGB);
-			REL::Relocation<func_t> func{ REL::ID(270276) };
+			static REL::Relocation<func_t> func{ REL::ID(270276) };
 			return func(header, sRGB);
 		}
 
 		inline void LoadTextureData(Texture* texture, char* data, std::uint32_t dataSize, std::uint32_t mipLevel)
 		{
 			using func_t = decltype(&BSGraphics::LoadTextureData);
-			REL::Relocation<func_t> func{ REL::ID(415185) };
+			static REL::Relocation<func_t> func{ REL::ID(415185) };
 			return func(texture, data, dataSize, mipLevel);
 		}
 

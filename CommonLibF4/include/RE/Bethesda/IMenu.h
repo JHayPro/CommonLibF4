@@ -1275,14 +1275,14 @@ namespace RE
 		void SetTexture(NiTexture* niTexture)
 		{
 			using func_t = decltype(&BSScaleformExternalTexture::SetTexture);
-			REL::Relocation<func_t> func{ REL::ID(119731) };
+			static REL::Relocation<func_t> func{ REL::ID(119731) };
 			return func(this, niTexture);
 		}
 
 		void ReleaseTexture()
 		{
 			using func_t = decltype(&BSScaleformExternalTexture::ReleaseTexture);
-			REL::Relocation<func_t> func{ REL::ID(651971) };
+			static REL::Relocation<func_t> func{ REL::ID(651971) };
 			return func(this);
 		}
 
