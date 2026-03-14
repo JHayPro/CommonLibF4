@@ -408,15 +408,46 @@ void dump_nirtti()
 
 void MessageHandler(F4SE::MessagingInterface::Message* a_message)
 {
-	logger::trace("Message type {} was dispatched!", a_message->type);
 	switch (a_message->type) {
 	case F4SE::MessagingInterface::kGameDataReady:
-		try {
-			dump_rtti();
-			dump_nirtti();
-		} catch (const std::exception& e) {
-			logger::error("{}", e.what());
-		}
+		std::thread([]() {
+			try {
+				//Only regenerate IDs if version has changed, slow to reg at each game launch
+				const std::string currentVersion = REL::Module::get().version().string();
+
+				constexpr std::string_view versionFile = "RTTI_dump.version";
+
+				const bool filesExist =
+					std::filesystem::exists("RTTI_IDs.h") &&
+					std::filesystem::exists("VTABLE_IDs.h") &&
+					std::filesystem::exists("NiRTTI_IDs.h");
+
+				bool needsRegen = !filesExist;
+
+				if (filesExist) {
+					if (std::filesystem::exists(versionFile)) {
+						std::ifstream in(versionFile.data());
+						std::string stored;
+						std::getline(in, stored);
+						if (stored != currentVersion) {
+							needsRegen = true;
+						}
+					} else {
+						needsRegen = true;
+					}
+				}
+
+				if (needsRegen) {
+					dump_rtti();
+					dump_nirtti();
+
+					std::ofstream out(versionFile.data());
+					out << currentVersion << '\n';
+				}
+			} catch (const std::exception& e) {
+				logger::error("{}", e.what());
+			}
+		}).detach();
 		break;
 	default:
 		break;
